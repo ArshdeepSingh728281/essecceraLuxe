@@ -20,19 +20,19 @@ export default function ImageSlider() {
     
 
 
-    const nextImage = () => {
-      setCurrentIndex((prevIndex) =>
-        alreadyloaded.length === 0 ? 0 : (prevIndex + 1) % alreadyloaded.length
-      );
-    };
+    // const nextImage = () => {
+    //   setCurrentIndex((prevIndex) =>
+    //     alreadyloaded.length === 0 ? 0 : (prevIndex + 1) % alreadyloaded.length
+    //   );
+    // };
     
-    const prevImage = () => {
-      setCurrentIndex((prevIndex) =>
-        alreadyloaded.length === 0
-          ? 0
-          : (prevIndex - 1 + alreadyloaded.length) % alreadyloaded.length
-      );
-    };
+    // const prevImage = () => {
+    //   setCurrentIndex((prevIndex) =>
+    //     alreadyloaded.length === 0
+    //       ? 0
+    //       : (prevIndex - 1 + alreadyloaded.length) % alreadyloaded.length
+    //   );
+    // };
     
     const [tobeloading, settobeloading] = useState([...images]);
     const [alreadyloaded, setalreadyloaded] = useState<string[]>([]);

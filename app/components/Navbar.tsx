@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePageStore , Pages} from "../store/pageStore";
-import styles from "../styles/style.module.css";
+// import styles from "../styles/style.module.css";
 
 
 
