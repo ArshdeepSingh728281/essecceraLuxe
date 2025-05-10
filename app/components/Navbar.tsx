@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { usePageStore , Pages} from "../store/pageStore";
 import styles from "../styles/style.module.css";
 
