@@ -14,7 +14,7 @@ export default function Main() {
         <div className="w-full flex flex-row justify-around px-[50px] h-[130px]">
           <AboutusComp text="Backed by Robust Tech Infrastructure & Scalable Supply Chain" />
           <AboutusComp text="Pioneering Sustainability With Clean & Conscious Products" />
-          <AboutusComp text="Purpose-Led, People-Centric Brand Philosophy2" />
+          <AboutusComp text="Purpose-Led, People-Centric Brand Philosophy" />
           <AboutusComp text="India's Fastest-Growing Tech-Enabled Personal Care Brand" />
         </div>
 
@@ -28,9 +28,9 @@ export default function Main() {
 
 function AboutusComp({ text }: { text: string }) {
   return (
-    <div className=" flex items-center justify-center w-[270px] px-[30px] bg-[#E6E0D7] rounded relative h-full" >
-      <img src="/images/about1.png" alt="" className="w-[80px] absolute top-[-40px] left-[97px]" />
-      <div className="text-center text-[#123458] text-[16px] font-[600] mt-[27px]">{text}</div>
+    <div className=" flex items-center justify-center w-[290px] px-[30px] bg-[#e5dfd68c] rounded relative h-full" >
+      <img src="/images/about1.png" alt="" className="w-[80px] absolute top-[-40px] left-[109px]" />
+      <div className="text-center text-[#123458] text-[16px] font-[500] mt-[27px] leading-tight">{text}</div>
 
 
     </div>
