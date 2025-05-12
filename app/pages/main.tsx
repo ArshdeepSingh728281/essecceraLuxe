@@ -12,10 +12,10 @@ export default function Main() {
       <div className="flex items-center mt-24 flex-col">
         <div className="text-4xl font-bold text-[#444546] mb-16">About us</div>
         <div className="w-full flex flex-row justify-around px-[50px] h-[130px]">
-          <AboutusComp text="Backed by Robust Tech Infrastructure & Scalable Supply Chain" />
-          <AboutusComp text="Pioneering Sustainability With Clean & Conscious Products" />
-          <AboutusComp text="Purpose-Led, People-Centric Brand Philosophy" />
-          <AboutusComp text="India's Fastest-Growing Tech-Enabled Personal Care Brand" />
+          <AboutusComp img="about1.png" text="Backed by Robust Tech Infrastructure & Scalable Supply Chain" />
+          <AboutusComp img="about2.png" text="Pioneering Sustainability With Clean & Conscious Products" />
+          <AboutusComp img="about3.png" text="Purpose-Led, People-Centric Brand Philosophy" />
+          <AboutusComp img="about4.png" text="India's Fastest-Growing Tech-Enabled Personal Care Brand" />
         </div>
 
 
@@ -26,10 +26,10 @@ export default function Main() {
   )
 }
 
-function AboutusComp({ text }: { text: string }) {
+function AboutusComp({ text,img }: { text: string, img: string }) {
   return (
     <div className=" flex items-center justify-center w-[290px] px-[30px] bg-[#e5dfd68c] rounded relative h-full" >
-      <img src="/images/about1.png" alt="" className="w-[80px] absolute top-[-40px] left-[109px]" />
+      <img src={`/images/${img}`} className="w-[80px] h-[80px] rounded-full absolute top-[-40px] left-[104px]" />
       <div className="text-center text-[#123458] text-[16px] font-[500] mt-[27px] leading-tight">{text}</div>
 
 
