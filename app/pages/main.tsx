@@ -47,12 +47,10 @@ export default function Main() {
           </span></div>
         <div className="px-[20px] mt-[30px] flex flex-row justify-center ">
           <div className="bg-[#51538c26] px-[30px] py-[10px] rounded-tl-[5px] rounded-tr-[0px] rounded-br-[0px] rounded-bl-[5px]  flex items-center  ">
-            Essenceara Luxe began not in a boardroom, but in a college dorm room—fueled by passion, curiosity, and an unapologetic love for beauty. Founded by two third-year college students with big dreams and even bigger ambitions, Essenceara Luxe was born out of a simple question: Why should luxury beauty feel so out of reach, especially for the generation redefining it?
+            {"Essenceara Luxe began not in a boardroom, but in a college dorm room—fueled by passion, curiosity, and an unapologetic love for beauty. Founded by two third-year college students with big dreams and even bigger ambitions, Essenceara Luxe was born out of a simple question: Why should luxury beauty feel so out of reach, especially for the generation redefining it?"}
             <br />
             <br />
-            We started with Uamore, our debut perfume brand—crafted to evoke emotion, celebrate individuality, and make luxury fragrance accessible yet unforgettable. Every scent tells a story, and Uamore is ours: bold, driven, and made with intention.
-            Essenceara Luxe isn't just a brand; it&apos;s the beginning of a legacy. With a commitment to quality, craftsmanship, and consumer-first innovation, we’re laying the foundation for a house of beauty brands built for the modern world.
-            And this? This is just the start.
+            {"We started with Uamore, our debut perfume brand—crafted to evoke emotion, celebrate individuality, and make luxury fragrance accessible yet unforgettable. Every scent tells a story, and Uamore is ours: bold, driven, and made with intention.Essenceara Luxe isn't just a brand; it's the beginning of a legacy. With a commitment to quality, craftsmanship, and consumer-first innovation, we’re laying the foundation for a house of beauty brands built for the modern world.And this? This is just the start."}
           </div>
           <img src="/images/rocket.png"  className="w-[380px] h-[280px] bg-[#51538c26] ml-[5px] px-[30px] rounded-tl-[0px] rounded-tr-[5px] rounded-br-[5px] rounded-bl-[0px]" alt="" />
 
