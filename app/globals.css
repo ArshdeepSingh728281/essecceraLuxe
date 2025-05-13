@@ -29,6 +29,7 @@ body {
   color: var(--foreground);
   font-family: "Montserrat", sans-serif;
   overflow-x:hidden ;
+  background-color: #F1EFEC;
 }
 
 
@@ -42,3 +43,30 @@ body {
 }
 
 
+
+.gradfortext{
+  background: #FFD596;
+background: linear-gradient(78deg, rgba(255, 213, 150, 1) 0%, rgba(255, 235, 204, 1) 90%, rgba(238, 217, 186, 1) 100%);
+  
+}
+
+
+.gradintext {
+ background: linear-gradient(-71deg, rgba(217, 131, 5, 0.67) 0%, rgba(221, 197, 160, 1) 90%, rgba(203, 149, 69, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+
+
+.borderbtm{
+    width: 95px;
+    margin-left: auto;
+    height: 3px;
+    margin-right: 2px;
+    border-radius: 4px;
+    margin-top: -5px;
+    background-color: #2d2d2d99;
+}
