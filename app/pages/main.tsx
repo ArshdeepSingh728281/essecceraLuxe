@@ -1,11 +1,13 @@
 import Navbar from "../components/Navbar";
 import TopLine from "../components/TopLine";
 import ImageSlider from "../components/ImageSlider"
+import Footer from "../components/Footer";
+import Copyright from "../components/Copyright";
 
 
 export default function Main() {
   return (
-    <div className="bg-white text-black pb-[1000px]">
+    <div className="bg-white text-black ">
       <TopLine />
       <Navbar />
       <ImageSlider />
@@ -84,6 +86,10 @@ export default function Main() {
 
         </div>
       </div>
+
+
+      <Footer/>
+      <Copyright/>
 
 
 
