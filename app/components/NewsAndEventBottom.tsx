@@ -41,10 +41,11 @@ const Group: NextPage = () => {
             </div>
           </div>
           <p className="text-[#171717] text-base leading-relaxed max-w-3xl">
-            We're thrilled to announce that we've successfully completed our Seed Round this week! This milestone marks a significant step
-            forward for our perfume brand, empowering us to scale production, enhance our signature scents, and bring our vision of luxury
-            and authenticity to even more fragrance lovers around the world. A heartfelt thank you to our early investors for believing in
-            our journey — the best is yet to come.
+            We&apos;re thrilled to announce that we&apos;ve successfully completed our Seed Round this week!
+            This milestone marks a significant step forward for our perfume brand, empowering us to scale
+            production, enhance our signature scents, and bring our vision of luxury and authenticity to
+            even more fragrance lovers around the world. A heartfelt thank you to our early investors for
+            believing in our journey — the best is yet to come.
           </p>
         </div>
       </div>

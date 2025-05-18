@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { FaRegFileAlt } from 'react-icons/fa';
 
-const quarterKeys = ['Quarter 1', 'Quarter 2', 'Quarter 3'] as const;
-type Quarter = typeof quarterKeys[number];
+type Quarter = 'Quarter 1' | 'Quarter 2' | 'Quarter 3';
+
 
 const reports: Record<Quarter, string[]> = {
   'Quarter 1': [
