@@ -55,23 +55,43 @@ background: linear-gradient(78deg, rgba(255, 213, 150, 1) 0%, rgba(255, 235, 204
 .gradintext {
  background: linear-gradient(-71deg, rgba(217, 131, 5, 0.67) 0%, rgba(221, 197, 160, 1) 90%, rgba(203, 149, 69, 1) 100%);
   -webkit-background-clip: text;
+  height: 64px;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  font-weight: 600;
+  font-weight: 900;
+  font-size: 50px;
 }
 
 
 .borderbtm{
-    width: 95px;
-    margin-left: auto;
-    height: 3px;
+    width:220px;
+    height: 4px;
     margin-right: 2px;
-    border-radius: 4px;
-    margin-top: -5px;
+    border-radius: 1px;
+    margin-top: 20px;
     background-color: #2d2d2d99;
 }
 
 .giveshadow{
   box-shadow: -5px -5px 20px rgba(137, 137, 137, 0.207);
+}
+
+
+.readmorebtnclass{
+  padding: 15px 40px;
+  /* width: 143px; */
+  width: fit-content;
+  border: 2px solid #E0A751;
+  color: #E0A751;
+  margin-top: 20px;
+  margin-left: -10px;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: all 0.2s ease-in-out;
+}
+
+.readmorebtnclass:hover{
+  background-color: #E0A751;
+  color: white;
 }

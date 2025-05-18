@@ -34,11 +34,11 @@ const Group: NextPage = () => {
           <h3 className="text-2xl font-semibold mb-2 text-[#171717]">Completed Seed Round this week</h3>
           <div className="flex items-center gap-2 text-sm text-[#6A5D5D] mb-4">
             <span>23k views</span>
+              <div className="relative w-4 h-4">
+                <Image src="/Frame.svg" alt="icon" fill />
+              </div>
             <span className="text-xl font-bold">·</span>
             <span>5 Days Ago</span>
-            <div className="relative w-5 h-5">
-              <Image src="/Frame.svg" alt="icon" fill />
-            </div>
           </div>
           <p className="text-[#171717] text-base leading-relaxed max-w-3xl">
             We&apos;re thrilled to announce that we&apos;ve successfully completed our Seed Round this week!

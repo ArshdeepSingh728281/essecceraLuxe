@@ -42,7 +42,7 @@ export default function Main() {
 
 
 
-      <div className="flex items-center mt-26 flex-col">
+      {/* <div className="flex items-center mt-26 flex-col">
         <div className="text-4xl font-[900] text-[#444546]  mt-[20px]">Our <span className="gradintext">
           Story
           <div className="borderbtm"></div>
@@ -57,8 +57,29 @@ export default function Main() {
           <img src="/images/rocket.png"  className="w-[380px] h-[280px] bg-[#51538c26] ml-[5px] px-[30px] rounded-tl-[0px] rounded-tr-[5px] rounded-br-[5px] rounded-bl-[0px]" alt="" />
 
         </div>
-      </div>
+      </div> */}
 
+
+
+      <div className="flex items-center flex-row relative  w-[full] justify-between px-40 mt-[60px] mb-[60px] pt-[80px] pb-[100px]">
+        <div className="z-10 flex  justify-left flex-col">
+        <div className="text-5xl font-[900] text-[#444546]  mt-[20px]">Our 
+          <div className="gradintext">
+          Story 
+          </div>
+        </div>
+          <div className="borderbtm"></div>
+
+          <div className="z-10 mt-8 text-[18px] w-[80%]">
+            Essenceara Luxe began not in a boardroom, but in a college dorm room—fueled by passion, curiosity, and an unapologetic love for beauty. Founded by two third-year college students with big dreams and even bigger ambitions, Essenceara Luxe was born out of a simple question: Why should luxury beauty feel so out of reach, especially for the generation redefining it?
+          </div>
+
+          <span className="z-10 readmorebtnclass">Read More</span> 
+
+        </div>
+        <img src="/images/rocket.png"  className="z-10 w-[380px] mr-[20px]   ml-[5px] px-[30px] rounded-tl-[0px] rounded-tr-[5px] rounded-br-[5px] rounded-bl-[0px]" alt="" />
+        <img src="/randomsvg.png" className="opacity-70 absolute top-[0px] left-[0px]" alt="" />
+      </div>
 
 
 
