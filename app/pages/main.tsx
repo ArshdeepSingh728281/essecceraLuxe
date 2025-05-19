@@ -24,7 +24,7 @@ export default function Main() {
 
       <div className="flex items-center mt-26 flex-col">
         <div className="text-4xl font-[900] text-[#444546] mb-16">Essenceara Luxe <span className="gradfortext">Unveils</span></div>
-        <div className="flex flex-row justify-center  bg-[#edd7b5] px-[150px] py-[50px]">
+        <div className="flex flex-row justify-center  bg-[#edd7b5] px-[150px] py-[50px] w-[90%] rounded-[10px]">
           <img src="/images/uamorelogo.png" className="w-[220px] h-[220px] mr-[35px] ml-[30px]" alt="" /> 
           <div className="">
             <div className="text-3xl mb-[15px] text-center font-[900]">UAMORE</div>
