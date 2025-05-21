@@ -15,14 +15,14 @@ export default function Navbar(){
 
 
     return (
-        <div className="flex xl:justify-between items-center w-full  h-10 xl:h-16 bg-white px-14 xl:pt-10 pt-8">
+        <div className="flex xl:justify-between items-center w-full  h-10 xl:h-16 bg-white px-4 xl:px-14 xl:pt-10 pt-8">
             <div className="hidden justify-between items-center h-full w-1/3 xl:flex"> 
                 <NavbarItem to="about" text="About Us" />
                 <NavbarItem to="/" text="Home"/>
                 <NavbarItem to="newsandevents" text="News & Events"/>
             </div>
 
-            <div onClick={()=>{setmenustate(true);console.log("hello world")}}  className="flex justify-center items-center h-[60px] w-[30px] xl:hidden z-10">
+            <div onClick={()=>{setmenustate(true)}}  className="flex justify-center items-center h-[60px] w-[30px] xl:hidden z-10">
                 <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
                 </svg>
@@ -44,6 +44,9 @@ export default function Navbar(){
             <div className={`${menustate ? "translate-x-0" : "translate-x-[-100%]"} transform transition-all fixed top-0 left-0 bottom-0 bg-black opacity-50 h-full w-[40%] z-20`}> 
             {/* content */}
             </div>
+
+            <div onClick={()=>{setmenustate(false)}} className={` ${menustate ? "block" : "hidden"} fixed top-0 left-0 right-0 bottom-0 w-full h-full z-11`}></div> 
+            
 
         </div>
     )
