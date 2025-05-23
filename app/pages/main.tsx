@@ -29,7 +29,7 @@ export default function Main() {
 
           <img src="/images/uamorelogo.png" className="xl:w-[200px] xl:h-[220px] w-[140px]   h-[150px]  mr-[35px] ml-[30px] mb-[30px] xl:mb-[0px]" alt="" /> 
 
-          <div className="max-w-[739px]">
+          <div className="max-w-[739px] ">
             <div className="text-3xl mb-[15px] text-center font-[900]">UAMORE</div>
             <div className="text-center px-[45px] text-[17px]">
               Essenceara Luxe is a modern house of beauty brands, dedicated to crafting premium, purpose-driven experiences for today’s discerning consumer. Rooted in elegance and innovation, we believe beauty is more than a product—it’s a journey of self-expression and sensorial delight.
@@ -67,7 +67,7 @@ export default function Main() {
 
 
 
-      <div className="flex items-center flex-row relative  w-[full] justify-between px-40 mt-[60px] mb-[60px] pt-[80px] pb-[100px] flex-wrap">
+      <div className="flex items-center flex-row relative  w-[full] justify-between xl:px-30 px-10 mt-[60px] mb-[60px] pt-[80px] pb-[100px] flex-wrap">
         <div className="z-10 flex  justify-left flex-col">
         <div className="text-5xl font-[900] text-[#444546]  mt-[20px]">Our 
           <div className="gradintext">
@@ -76,7 +76,7 @@ export default function Main() {
         </div>
           <div className="borderbtm"></div>
 
-          <div className="z-10 mt-8 text-[18px] w-[80%]">
+          <div className="z-10 mt-8 text-[18px]  max-w-[780px]">
             Essenceara Luxe began not in a boardroom, but in a college dorm room—fueled by passion, curiosity, and an unapologetic love for beauty. Founded by two third-year college students with big dreams and even bigger ambitions, Essenceara Luxe was born out of a simple question: Why should luxury beauty feel so out of reach, especially for the generation redefining it?
           </div>
 
@@ -84,30 +84,36 @@ export default function Main() {
 
         </div>
         <img src="/images/rocket.png"  className="z-10 w-[380px] mr-[20px]   ml-[5px] px-[30px] rounded-tl-[0px] rounded-tr-[5px] rounded-br-[5px] rounded-bl-[0px]" alt="" />
-        <img src="/randomsvg.png" className="opacity-70 absolute top-[0px] left-[0px]" alt="" />
+        <img src="/randomsvg.png" className=" xl:h-[600px] w-[100%] h-[1000px] opacity-70 absolute top-[0px] left-[0px]" alt="" />
       </div>
 
 
 
 
       
-      <div className="flex items-center mt-26 flex-col">
-        <div className="text-4xl font-[900] text-[#444546]  mt-[20px] mb-[50px]">Our Brands & Businesses</div>
-        <div className="flex flex-row justify-around align-center w-[100%]">
+      <div className="flex items-center mt-26 flex-col flex-wrap">
+        <div className="text-4xl font-[900] text-[#444546]  mt-[20px] mb-[50px] text-center">Our Brands & Businesses</div>
+        <div className="flex flex-row justify-around align-center w-[100%] flex-wrap ">
 
-          <div className="relative w-[160px] flex items-center justify-center">
+          <div className=" flex justify-center items-center min-w-[300px] my-8 xl:my-0 mt-0">
+          <div className="relative w-[160px] flex items-center justify-center mx-4 my-4 w-[33%] ">
             <img src="images/bluroneleft.png" alt="" />
             <div className="top-50 absolute text-white font-[600] top-[45%] left-[15px]">Comming Soon</div>
           </div>
+          </div>
 
-          <div className="relative w-[160px] flex items-center justify-center">
+          <div className="flex justify-center items-center  min-w-[300px] my-8 xl:my-0">
+          <div className="relative w-[160px] flex items-center justify-center w-[33%] ">
             <img src="images/uamorelogo.png" alt="" />
             {/* <div className="top-50 absolute text-white font-[600] top-[45%] left-[15px]">Comming Soon</div> */}
           </div>
-
+          </div>
+ 
+          <div className=" flex justify-center items-center min-w-[300px] my-8 xl:my-0">
           <div className="relative w-[160px] flex items-center justify-center">
             <img src="images/blurtworight.png" alt="" />
             <div className="top-50 absolute text-white font-[600] top-[45%] left-[15px] text-[#ffffffc7]">Comming Soon</div>
+          </div>
           </div>
 
 
