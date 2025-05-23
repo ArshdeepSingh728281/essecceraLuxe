@@ -178,7 +178,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 .loadingbar{
     display: flex;
-    width: 20%;
+    width: 100%;
     align-items: center;
     justify-content:  center;
     margin-top: 25px;

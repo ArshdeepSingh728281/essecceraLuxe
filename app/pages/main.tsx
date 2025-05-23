@@ -11,9 +11,9 @@ export default function Main() {
       <TopLine />
       <Navbar />
       <ImageSlider />
-      <div className="flex items-center mt-24 flex-col">
+      <div className="flex items-center mt-24 flex-col h-full flex-wrap  ">
         <div className="text-4xl font-[600] text-[#444546] mb-16">About us</div>
-        <div className="w-full flex flex-row justify-around px-[50px] h-[130px]">
+        <div className="w-full flex flex-row justify-around px-[50px]  flex-wrap">
           <AboutusComp img="about1.png" text="Backed by Robust Tech Infrastructure & Scalable Supply Chain" />
           <AboutusComp img="about2.png" text="Pioneering Sustainability With Clean & Conscious Products" />
           <AboutusComp img="about3.png" text="Purpose-Led, People-Centric Brand Philosophy" />
@@ -22,11 +22,14 @@ export default function Main() {
       </div>
 
 
-      <div className="flex items-center mt-26 flex-col">
+      <div className="flex items-center mt-26 flex-col ">
         <div className="text-4xl font-[900] text-[#444546] mb-16">Essenceara Luxe <span className="gradfortext">Unveils</span></div>
-        <div className="flex flex-row justify-center  bg-[#edd7b5] px-[150px] py-[50px] w-[90%] rounded-[10px]">
-          <img src="/images/uamorelogo.png" className="w-[220px] h-[220px] mr-[35px] ml-[30px]" alt="" /> 
-          <div className="">
+
+        <div className="flex flex-row  items-center justify-center flex-wrap bg-[#edd7b5] px-[5px] xl:px-[150px]  py-[40px] xl:py-[50px] w-[90%] rounded-[10px]  ">
+
+          <img src="/images/uamorelogo.png" className="xl:w-[200px] xl:h-[220px] w-[140px]   h-[150px]  mr-[35px] ml-[30px] mb-[30px] xl:mb-[0px]" alt="" /> 
+
+          <div className="max-w-[739px]">
             <div className="text-3xl mb-[15px] text-center font-[900]">UAMORE</div>
             <div className="text-center px-[45px] text-[17px]">
               Essenceara Luxe is a modern house of beauty brands, dedicated to crafting premium, purpose-driven experiences for today’s discerning consumer. Rooted in elegance and innovation, we believe beauty is more than a product—it’s a journey of self-expression and sensorial delight.
@@ -35,7 +38,9 @@ export default function Main() {
               Our vision comes to life through Uamore, our signature perfume brand that embodies luxury, individuality, and emotion. With Uamore, we’re redefining fragrance for the modern generation—crafted with precision, inspired by feeling.
             </div>
           </div>
+
         </div>
+
       </div>
       
 
@@ -62,7 +67,7 @@ export default function Main() {
 
 
 
-      <div className="flex items-center flex-row relative  w-[full] justify-between px-40 mt-[60px] mb-[60px] pt-[80px] pb-[100px]">
+      <div className="flex items-center flex-row relative  w-[full] justify-between px-40 mt-[60px] mb-[60px] pt-[80px] pb-[100px] flex-wrap">
         <div className="z-10 flex  justify-left flex-col">
         <div className="text-5xl font-[900] text-[#444546]  mt-[20px]">Our 
           <div className="gradintext">
@@ -123,7 +128,7 @@ export default function Main() {
 
 function AboutusComp({ text, img }: { text: string, img: string }) {
   return (
-    <div className=" flex items-center justify-center w-[290px] px-[30px] bg-[#e5dfd68c] rounded relative h-full" >
+    <div className=" flex items-center h-[130px] justify-center w-[290px] px-[30px] bg-[#e5dfd68c] rounded relative  mt-[50px]" >
       <img src={`/images/${img}`} className="w-[80px] h-[80px] rounded-full absolute top-[-40px] left-[104px]" />
       <div className="text-center text-[#123458] text-[16px] font-[500] mt-[27px] leading-tight">{text}</div>
 

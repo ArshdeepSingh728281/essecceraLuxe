@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="giveshadow bg-[#D4C9BE] flex items-start justify-between flex-row mt-[80px] px-[60px] pb-[100px] pt-[50px]">
+    <div className="giveshadow bg-[#D4C9BE] flex items-start justify-between flex-row mt-[80px] px-[60px] pb-[100px] pt-[50px] flex-wrap">
         <img  src="mainlogo.png" className={`w-60 ml-4 z-10 mr-[20px]`}/>
 
         <FootItemBluePrint about="About Us"> 
