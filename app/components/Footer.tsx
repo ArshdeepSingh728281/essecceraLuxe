@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <div className="giveshadow bg-[#D4C9BE] flex items-start justify-between flex-row mt-[80px] px-[60px] pb-[100px] pt-[50px] flex-wrap">
-        <img  src="mainlogo.png" className={`w-60 ml-4 z-10 mr-[20px]`}/>
+    <div className="giveshadow bg-[#D4C9BE] flex items-start justify-between flex-col xl:flex-row xl:mt-[80px] mt-[40px]  px-[20px] xl:px-[60px] pb-[100px] pt-[50px] flex-wrap">
+        <img  src="mainlogo.png" className={`w-60 ml-0 mb-4 xl:mb-4 xl:ml-4 z-10 mr-[20px]`}/>
 
         <FootItemBluePrint about="About Us"> 
             <FootItemBluePrintInneritem itemname="Our Mission" to="about"/>
@@ -35,7 +35,7 @@ export default function Footer() {
 
 function FootItemBluePrint({about,children}:{about:string,children:React.ReactNode}){
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col mt-[20px] xl:mt-[0px] ">
             <div className="font-[500]  text-[30px] ">{about}</div>
             {children}
         </div>
