@@ -14,7 +14,7 @@ export default function AboutPage() {
 
       <div className="flex items-center justify-center flex-col">
           <div className="mt-4 text-3xl font-medium">Join Now</div>
-          <div className="mt-4 text-xl font-[10] text-[#252525cc]">Leave your message and we'll get back to you shortly.</div>
+          <div className="mt-4 text-xl font-[10] text-[#252525cc]">{"Leave your message and we'll get back to you shortly."}</div>
           <input type="text" placeholder="Full name*" className=" ease-linear placeholder:text-[black] text-[18px] w-[41%] rounded-[5px] px-[20px] py-[15px]  bg-[#D9D9D9] mt-6 focus:border-[2px] focus:border-[#6b400047] focus:py-[13px] focus:px-[18px]" />
           <div className="flex flex-row flex-wrap items-center justify-center w-[100%]">
           <input type="text" placeholder="Email*" className=" ease-linear placeholder:text-[black] text-[18px] mr-2 w-[20%] rounded-[5px] px-[20px] py-[15px]  bg-[#D9D9D9] mt-4 focus:border-[2px] focus:border-[#6b400047] focus:py-[13px] focus:px-[18px]" />
