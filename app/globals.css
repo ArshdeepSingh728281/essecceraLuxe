@@ -120,6 +120,6 @@ select {
   aspect-ratio: 36 / 14; /* 20:9 aspect ratio */
   text-align: center;
 }
-.tran {
-  transform: all 0.2s ease-in-out;
+.tran{
+  transition: all 0.1s ease-in-out;
 }
