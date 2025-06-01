@@ -1,9 +1,7 @@
 import OurBrandsPage from "../pages/OurBrandsPage";
 
-export default function NewsAndEvents() {
-  return (
-    <div>
-      <OurBrandsPage />
-    </div>
-  );
+export default function OurBrands() {
+    return (
+       <OurBrandsPage/>
+    )
 }

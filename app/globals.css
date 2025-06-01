@@ -95,3 +95,31 @@ background: linear-gradient(78deg, rgba(255, 213, 150, 1) 0%, rgba(255, 235, 204
   background-color: #E0A751;
   color: white;
 }
+
+*:focus{
+  outline:none;
+}
+
+
+
+
+select {
+  /* background: url('path-to-your-arrow-icon.svg') no-repeat right 12px center; */
+  padding-right: 30px;
+}
+
+
+.abso{
+  position: absolute;
+  top:0;
+  
+}
+
+
+.apratio {
+  aspect-ratio: 36 / 14; /* 20:9 aspect ratio */
+  text-align: center;
+}
+.tran {
+  transform: all 0.2s ease-in-out;
+}

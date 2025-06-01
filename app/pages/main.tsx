@@ -31,7 +31,7 @@ export default function Main() {
 
           <div className="max-w-[739px] ">
             <div className="text-3xl mb-[15px] text-center font-[900]">UAMORE</div>
-            <div className="text-center px-[45px] text-[17px]">
+            <div className="text-center px-[15px] xl:px-[45px] text-[17px]">
               Essenceara Luxe is a modern house of beauty brands, dedicated to crafting premium, purpose-driven experiences for today’s discerning consumer. Rooted in elegance and innovation, we believe beauty is more than a product—it’s a journey of self-expression and sensorial delight.
             <br></br>
             <br></br>

@@ -99,7 +99,7 @@ export default function ImageSlider() {
           });
           setBarKey(prev => prev + 1);
         }
-      }, 3500);
+      }, 3400);
     
       return () => clearInterval(interval);
     }, [tobeloading, currentIndex]);
