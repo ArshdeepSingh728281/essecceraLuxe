@@ -9,7 +9,7 @@ export default function AboutPage() {
       <TopLine/>
       <Navbar/>
         <h2 className="ml-26  mt-15 text-[35px] font-semibold text-black mb-6">
-          Work At <span className="gradfortext" >Esscnceara Luxe</span>
+          Work At <span className="gradfortext" >Essenceara Luxe</span>
         </h2>
 
       <div className="flex items-center justify-center flex-col">
