@@ -123,3 +123,39 @@ select {
 .tran{
   transition: all 0.1s ease-in-out;
 }
+
+
+.responsivemargintobtn {
+  margin-top: 50px;
+}
+
+.maxwithtoimginput{
+  max-width: 700px;
+}
+
+
+@media screen and (max-width: 1257px) {
+  .responsivemargintobtn {
+    margin-top: 80px;
+  }
+}
+@media screen and (max-width: 913px) {
+  .responsivemargintobtn {
+    margin-top: 120px;
+  }
+}
+
+
+
+@media screen and (max-width: 700px) {
+  .maxwithtoimginput{
+  max-width: 500px;
+}
+}
+
+
+@media screen and (max-width: 500px) {
+  .maxwithtoimginput{
+  max-width: 350px;
+}
+}

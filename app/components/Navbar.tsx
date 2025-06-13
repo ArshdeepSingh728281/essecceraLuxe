@@ -41,8 +41,14 @@ export default function Navbar(){
             </div>
 
 
-            <div className={`${menustate ? "translate-x-0" : "translate-x-[-100%]"} transform transition-all fixed top-0 left-0 bottom-0 bg-black opacity-50 h-full w-[40%] z-20`}> 
+            <div className={`${menustate ? "translate-x-0" : "translate-x-[-100%]"} transform transition-all fixed top-0 left-0 bottom-0 bg-black opacity-50 h-full w-[280px] z-20 flex flex-col  pt-[100px]  pl-[30px]`}> 
             {/* content */}
+            <Navitemphone to="/" title="Home"/>
+            <Navitemphone to="about" title="About Us"/>
+            <Navitemphone to="newsandevents" title="News & Events"/>
+            <Navitemphone to="ourbrands" title="Our Brands"/>
+            <Navitemphone to="investorrelations" title="Investors"/>
+            <Navitemphone to="careers" title="Careers"/>
             </div>
 
             <div onClick={()=>{setmenustate(false)}} className={` ${menustate ? "block" : "hidden"} fixed top-0 left-0 right-0 bottom-0 w-full h-full z-11`}></div> 
@@ -51,6 +57,35 @@ export default function Navbar(){
         </div>
     )
 }
+
+
+
+
+type NavItemPhoneProps = {
+  to: Pages;
+  title: string;
+};
+
+function Navitemphone({ to, title }: NavItemPhoneProps) {
+
+      const { selectedPage, setSelectedPage } = usePageStore();  
+
+  return (
+    <Link href={to}>
+        {selectedPage == to ?(
+    <div onClick={() => setSelectedPage(to)} className="text-[30px]  mb-[20px] text-slate-50 z-30 font-[900]">
+      {title}
+    </div>
+    ):(
+    <div onClick={() => setSelectedPage(to)} className="text-[30px] text-white mb-[20px] z-30">
+      {title}
+    </div>
+    )
+    }
+    </Link>
+  );
+}
+
 
 
 function NavbarItem({to,text,minwidth}:{to:Pages,text:string,minwidth?:string}){
