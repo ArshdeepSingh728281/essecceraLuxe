@@ -9,43 +9,40 @@ import { useEffect, useState, useRef } from "react";
 
 export default function Main() {
 
-  let [aboutusheading, setAboutusHeading] = useState("About us")
-  let [essheading, setessheading] = useState("Essenceara Luxe")
-  let [essheadingend, setessheadingend] = useState("Unveils")
+  const [aboutusheading, setAboutusHeading] = useState("About us")
+  const [essheading, setessheading] = useState("Essenceara Luxe")
+  const [essheadingend, setessheadingend] = useState("Unveils")
 
-  let mystorytxt = "Essenceara Luxe began not in a boardroom, but in a college dorm room—fueled by passion, curiosity, and an unapologetic love for beauty. Founded by two third-year college students with big dreams and even bigger ambitions, Essenceara Luxe was born out of a simple question: Why should luxury beauty feel so out of reach, especially for the generation redefining it?";
-  let [ourstorytext, setourstorytext] = useState(mystorytxt)
+  const mystorytxt = "Essenceara Luxe began not in a boardroom, but in a college dorm room—fueled by passion, curiosity, and an unapologetic love for beauty. Founded by two third-year college students with big dreams and even bigger ambitions, Essenceara Luxe was born out of a simple question: Why should luxury beauty feel so out of reach, especially for the generation redefining it?";
+  const [ourstorytext, setourstorytext] = useState(mystorytxt)
 
-  const textareaRefforadd = useRef(null);
-  const textareaRefforaddtwo = useRef(null);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+  const textareaRefforadd = useRef<HTMLTextAreaElement|null>(null);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+  const textareaRefforaddtwo = useRef<HTMLTextAreaElement|null>(null);
 
-  const ourstorytextRef = useRef(null);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+  const ourstorytextRef = useRef<HTMLTextAreaElement|null>(null);
 
 
   useEffect(()=>{
             if (textareaRefforadd.current) {
-              // @ts-ignore
               textareaRefforadd.current.style.height = "auto";
-              // @ts-ignore
               textareaRefforadd.current.style.height = `${textareaRefforadd.current.scrollHeight}px`;
             }
             if (textareaRefforaddtwo.current) {
-              // @ts-ignore
               textareaRefforaddtwo.current.style.height = "auto";
-              // @ts-ignore
               textareaRefforaddtwo.current.style.height = `${textareaRefforaddtwo.current.scrollHeight}px`;
             }
             if (ourstorytextRef.current) {
-              // @ts-ignore
               ourstorytextRef.current.style.height = "auto";
-              // @ts-ignore
               ourstorytextRef.current.style.height = `${ourstorytextRef.current.scrollHeight}px`;
             }
   },[])
 
 
 
-  let [ourbrands, setOurbrands] = useState([
+  const [ourbrands, setOurbrands] = useState([
     {
       brandname: "UAMORE",
       img: "/images/uamorelogo.png",
@@ -58,7 +55,7 @@ export default function Main() {
     }
   ]);
 
-  let [addoutrbrand, setaddoutrbrand] = useState(
+  const [addoutrbrand, setaddoutrbrand] = useState(
     {
       brandname: "Name",
       img:"",
@@ -80,6 +77,22 @@ export default function Main() {
     );
   };
 
+
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+          const textareaRef = useRef<HTMLTextAreaElement|null>(null);
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+          const textareaReftwo = useRef<HTMLTextAreaElement|null>(null);
+
+          useEffect(() => {
+            if (textareaRef.current) {
+              textareaRef.current.style.height = "auto";
+              textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+            }
+            if (textareaReftwo.current) {
+              textareaReftwo.current.style.height = "auto";
+              textareaReftwo.current.style.height = `${textareaReftwo.current.scrollHeight}px`;
+            }
+          }, []);
 
 
   return (
@@ -124,23 +137,7 @@ export default function Main() {
 
 
         {ourbrands.map((item, i) => {
-          const textareaRef = useRef(null);
-          const textareaReftwo = useRef(null);
 
-          useEffect(() => {
-            if (textareaRef.current) {
-              // @ts-ignore
-              textareaRef.current.style.height = "auto";
-              // @ts-ignore
-              textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-            }
-            if (textareaReftwo.current) {
-              // @ts-ignore
-              textareaReftwo.current.style.height = "auto";
-              // @ts-ignore
-              textareaReftwo.current.style.height = `${textareaReftwo.current.scrollHeight}px`;
-            }
-          }, []);
 
           return (
             <div
@@ -262,7 +259,7 @@ export default function Main() {
                     className="mt-[10px]"
                     value={item.color}
                     onChange={(e) => {
-                      let updatedBrands = [...ourbrands];
+                      const updatedBrands = [...ourbrands];
                       updatedBrands[i].color = e.target.value;
                       setOurbrands(updatedBrands);
                     }}
@@ -490,8 +487,8 @@ export default function Main() {
 
 function AboutusComp({ text, img }: { text: string, img?: string }) {
 
-  let [dis, setdis] = useState("")
-  let [showimg, setshowimg] = useState(false)
+  const [dis, setdis] = useState("")
+  const [showimg, setshowimg] = useState(false)
 
   useEffect(() => {
     setdis(text)
