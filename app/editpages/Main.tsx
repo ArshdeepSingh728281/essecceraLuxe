@@ -278,7 +278,7 @@ export default function Main() {
           <AboutusComp img="about3.png" text="Purpose-Led, People-Centric Brand Philosophy" />
           <AboutusComp img="about4.png" text="India's Fastest-Growing Tech-Enabled Personal Care Brand" /> */}
           {aboutusdata.map((item,i)=>
-          <AboutusComp key={i} img={item.img} text={item.text} />
+          <AboutusComp key={i} img={item.img} text={item.text}  setaboutusdata={setaboutusdata}/>
           )}
         </div>
       </div>
@@ -843,7 +843,7 @@ onChange={(e) => {
   )
 }
 
-function AboutusComp({ text, img }: { text: string, img?: string }) {
+function AboutusComp({ text, img ,setaboutusdata}: { text: string, img?: string,setaboutusdata:any }) {
 
   const [dis, setdis] = useState("")
   const [showimg, setshowimg] = useState(false)
