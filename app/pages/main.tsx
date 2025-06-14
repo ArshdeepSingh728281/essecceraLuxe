@@ -27,7 +27,8 @@ export default function Main() {
 
         <div className="flex flex-row  items-center justify-center flex-wrap bg-[#edd7b5] px-[5px] xl:px-[150px]  py-[40px] xl:py-[50px] w-[90%] rounded-[10px]  ">
 
-          <img src="/images/uamorelogo.png" className="xl:w-[200px] xl:h-[220px] w-[140px]   h-[150px]  mr-[35px] ml-[30px] mb-[30px] xl:mb-[0px]" alt="" /> 
+          {/* <img src="/images/uamorelogo.png" className="xl:w-[200px] xl:h-[220px] w-[140px]   h-[150px]  mr-[35px] ml-[30px] mb-[30px] xl:mb-[0px]" alt="" />  */}
+          <img src="/images/uamorelogo.png" className="xl:w-[200px]  w-[140px]     mr-[35px] ml-[30px] mb-[30px] xl:mb-[0px]" alt="" /> 
 
           <div className="max-w-[739px] ">
             <div className="text-3xl mb-[15px] text-center font-[900]">UAMORE</div>

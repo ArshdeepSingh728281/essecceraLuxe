@@ -41,7 +41,7 @@ export default function Navbar(){
             </div>
 
 
-            <div className={`${menustate ? "translate-x-0" : "translate-x-[-100%]"} transform transition-all fixed top-0 left-0 bottom-0 bg-black opacity-50 h-full w-[280px] z-20 flex flex-col  pt-[100px]  pl-[30px]`}> 
+            <div className={`${menustate ? "translate-x-0" : "translate-x-[-100%]"}  transform transition-all fixed top-0 left-0 bottom-0 bg-black opacity-50 h-full w-[280px] z-20 flex flex-col  pt-[100px]  pl-[30px]        backdrop-blur-lg backdrop-saturate-150 bg-[rgba(17,25,40,0.54)] border border-[rgba(255,255,255,0.125)] `}> 
             {/* content */}
             <Navitemphone to="/" title="Home"/>
             <Navitemphone to="about" title="About Us"/>
