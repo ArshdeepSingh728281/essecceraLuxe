@@ -4,7 +4,7 @@ import TopLine from "../components/TopLine";
 import ImageSlider from "../components/ImageSlider"
 import Footer from "../components/Footer";
 import Copyright from "../components/Copyright";
-import { useEffect, useState, useRef, use } from "react";
+import { useEffect, useState, useRef } from "react";
 
 
 export default function Main() {
@@ -25,21 +25,21 @@ export default function Main() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const ourstorytextRef = useRef<HTMLTextAreaElement | null>(null);
 
-  const [aboutusdata,setaboutusdata] = useState([
+  const [aboutusdata,setaboutusdata] = useState<{ img: string; text: string }[]>([
     {
       img:"",
       text:"Backed by Robust Tech Infrastructure & Scalable Supply Chain"
     },
     {
-      img:"about2.png",
+      img:"/images/about2.png",
       text:"Pioneering Sustainability With Clean & Conscious Products"
     },
     {
-      img:"about3.png",
+      img:"/images/about3.png",
       text:"Purpose-Led, People-Centric Brand Philosophy"
     },
     {
-      img:"about4.png",
+      img:"/images/about4.png",
       text:"India's Fastest-Growing Tech-Enabled Personal Care Brand"
     },
     
@@ -278,7 +278,7 @@ export default function Main() {
           <AboutusComp img="about3.png" text="Purpose-Led, People-Centric Brand Philosophy" />
           <AboutusComp img="about4.png" text="India's Fastest-Growing Tech-Enabled Personal Care Brand" /> */}
           {aboutusdata.map((item,i)=>
-          <AboutusComp key={i} img={item.img} text={item.text}  setaboutusdata={setaboutusdata}/>
+          <AboutusComp key={i} img={item.img} text={item.text}  setaboutusdata={setaboutusdata} index={i}/>
           )}
         </div>
       </div>
@@ -843,7 +843,13 @@ onChange={(e) => {
   )
 }
 
-function AboutusComp({ text, img ,setaboutusdata}: { text: string, img?: string,setaboutusdata:any }) {
+type AboutUsItem = {
+  img: string;
+  text: string;
+};
+
+
+function AboutusComp({ text, img ,setaboutusdata , index}: { text: string, img?: string,setaboutusdata: React.Dispatch<React.SetStateAction<AboutUsItem[]>>,index:number }) {
 
   const [dis, setdis] = useState("")
   const [showimg, setshowimg] = useState(false)
@@ -851,6 +857,56 @@ function AboutusComp({ text, img ,setaboutusdata}: { text: string, img?: string,
   useEffect(() => {
     setdis(text)
   }, [])
+
+const handleDeleteImg = () => {
+  setaboutusdata((prevData: { img: string; text: string }[]) =>
+    prevData.map((item, i) =>
+      i === index ? { ...item, img: "" } : item
+    )
+  );
+};
+
+
+
+async function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      if (reader.result && typeof reader.result === "string") {
+
+        resolve(reader.result);
+      } else {
+        reject("Failed to read file as base64");
+      }
+    };
+
+    reader.onerror = () => reject("FileReader error");
+
+    reader.readAsDataURL(file); 
+  });
+}
+
+
+  
+
+const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  const base64 = await fileToBase64(file);
+
+  setaboutusdata((prevData: { img: string; text: string }[]) =>
+    prevData.map((item, i) =>
+      i === index ? { ...item, img: base64 } : item
+    )
+  );
+
+  console.log(img)
+};
+
+
+
 
   return (
     <div className=" flex  items-center h-[100%] justify-center w-[290px] px-[30px] bg-[#e5dfd68c] rounded relative  mt-[50px]" >
@@ -863,12 +919,14 @@ function AboutusComp({ text, img ,setaboutusdata}: { text: string, img?: string,
             className="w-[80px] h-[80px] rounded-full absolute top-[-40px] left-[104px] flex items-center justify-center bg-[#c1c1c187] cursor-pointer"
           >
             {showimg ? (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 z-20">
+              <div onClick={handleDeleteImg}  className="w-[80px] h-[80px] rounded-full  flex items-center justify-center bg-[#c1c1c187] cursor-pointer" >
+              <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 z-20">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
               </svg>
+              </div>
 
             ) : (
-              <img src={`/images/${img}`} className="w-[80px] h-[80px] rounded-full absolute  cursor-pointer" />
+              <img src={`${img}`} className="w-[80px] h-[80px] rounded-full absolute  cursor-pointer" />
 
             )}
 
@@ -876,12 +934,43 @@ function AboutusComp({ text, img ,setaboutusdata}: { text: string, img?: string,
 
         ) :
           (
-            <div className="w-[80px] h-[80px] rounded-full absolute top-[-40px] left-[104px] flex items-center justify-center bg-[#c1c1c187] cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-              </svg>
+            // <div onClick={()=>{console.log("upload")}} className="w-[80px] h-[80px] rounded-full absolute top-[-40px] left-[104px] flex items-center justify-center bg-[#c1c1c187] cursor-pointer">
+            //   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+            //     <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+            //   </svg>
 
-            </div>
+            // </div>
+
+            <>
+            <label
+  htmlFor={`file-input-${index}`}
+  className="w-[80px] h-[80px] rounded-full absolute top-[-40px] left-[104px] flex items-center justify-center bg-[#c1c1c187] cursor-pointer"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={1.5}
+    stroke="currentColor"
+    className="size-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+    />
+  </svg>
+</label>
+
+<input
+  id={`file-input-${index}`}
+  type="file"
+  accept="image/*"
+  className="hidden"
+  onChange={handleFileUpload}
+/>
+
+            </>
           )
       }
       {/* <div  className="text-center text-[#123458] text-[16px] font-[500] mt-[27px] leading-tight">
