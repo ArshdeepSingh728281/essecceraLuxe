@@ -1,30 +1,29 @@
 'use client';
-import type { NextPage } from 'next';
+// import type { NextPage } from 'next';
 import Image from 'next/image';
 
 
+type NewsItem = {
+  title: string;
+  img: string;
+  views: number;
+  time: string;
+  dis: string;
+};
 
-    type NewsItem = {
-      title: string;
-      img:string;
-      views: number;
-      time: string;
-      dis:string;
-    };
-
-    type NewsContentProps = {
-      item: NewsItem;
-      index: number;
-    };
-
+type NewsContentProps = {
+  item: NewsItem;
+  index: number;
+};
 
 
 
 
-
-const Group: NextPage = ({ item, index }: NewsContentProps) => {
+const Group:  React.FC<NewsContentProps> = ({ item, index }) => {
   return (
+
     <section className="bg-[#ffffff] px-6 md:px-20 -my-15">
+      <div className='hidden'>{index}</div>
         {/* Line divider */}
       <div className="lineDiv mt-16" />
 

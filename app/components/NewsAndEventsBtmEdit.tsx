@@ -1,5 +1,5 @@
 'use client';
-import type { NextPage } from 'next';
+// import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useState ,useEffect, useRef } from 'react';
 
@@ -22,10 +22,8 @@ import { useState ,useEffect, useRef } from 'react';
 
 
 
+const Group:  React.FC<NewsContentProps> = ({ item, index,setnewsdata }) => {
 
-
-
-const Group: NextPage = ({ item, index ,setnewsdata}: NewsContentProps) => {
 
   
       const [showimg,setshowimg] = useState(true);

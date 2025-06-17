@@ -1,5 +1,5 @@
 'use client';
-import type { NextPage } from 'next';
+// import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useState ,useEffect, useRef } from 'react';
 
@@ -19,7 +19,7 @@ import { useState ,useEffect, useRef } from 'react';
     };
 
 
-const Group: NextPage = ({ item, index ,setnewsdata}: NewsContentProps) => {
+const Group:  React.FC<NewsContentProps> = ({ item, index,setnewsdata }) => {
 
     const [showimg,setshowimg] = useState(true);
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);

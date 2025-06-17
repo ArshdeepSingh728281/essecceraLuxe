@@ -15,7 +15,7 @@ interface PageStore {
 }
 
  const usePageStore = create<PageStore>((set) => ({
-  selectedPage: "/edit",
+  selectedPage: "edit",
   setSelectedPage: (page) => set({ selectedPage: page }),
 }));
 

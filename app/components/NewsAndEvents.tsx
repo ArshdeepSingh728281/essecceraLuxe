@@ -1,23 +1,25 @@
 'use client';
-import type { NextPage } from 'next';
+// import type { NextPage } from 'next';
 import Image from 'next/image';
 
 
-    type NewsItem = {
-      title: string;
-      img:string;
-      views: number;
-      time: string;
-      dis:string;
-    };
+type NewsItem = {
+  title: string;
+  img: string;
+  views: number;
+  time: string;
+  dis: string;
+};
 
-    type NewsContentProps = {
-      item: NewsItem;
-      index: number;
-    };
+type NewsContentProps = {
+  item: NewsItem;
+  index: number;
+};
 
 
-const Group: NextPage = ({ item, index }: NewsContentProps) => {
+
+
+const Group:  React.FC<NewsContentProps> = ({ item, index }) => {
   return (
     <section key={index} className="bg-[#ffffff] px-6 md:px-20 py-16">
       {/* <h2 className="text-3xl md:text-4xl font-bold text-[#171717] mb-12">News And Events</h2> */}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaRegFileAlt } from 'react-icons/fa';
 
 // Types
@@ -55,6 +55,42 @@ export default function InvestorRelationsPage() {
 
   // Find the active report
   const activeReport = reports.find((report) => report.title === activeQuarter);
+
+  useEffect(()=>{
+    setReports([
+         {
+      title: 'Quarter 1',
+      files: [
+        {
+          fname: 'Q1 Financial Report',
+          file: '',
+        },
+        {
+          fname: 'Q1 Investor Brief',
+          file: '',
+        },
+      ],
+    },
+    {
+      title: 'Quarter 2',
+      files: [
+        {
+          fname: 'Q2 Financial Report',
+          file: '',
+        },
+      ],
+    },
+    {
+      title: 'Quarter 3',
+      files: [
+        {
+          fname: 'Q3 Overview',
+          file: '',
+        },
+      ],
+    },
+    ])
+  },[])
 
   return (
     <div className="min-h-screen bg-white p-16 text-black font-sans">

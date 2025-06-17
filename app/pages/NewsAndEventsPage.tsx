@@ -23,7 +23,7 @@ export default function NewsAndEventsPage() {
     };
 
 
-    const [newsdata,setnewsdata] = useState<NewsItem[]>([
+    const [newsdata] = useState<NewsItem[]>([
     {  
         title:"Completed Seed Round this week",
         views:23,
