@@ -99,7 +99,7 @@ export default function Main() {
           <div className=" flex justify-center items-center min-w-[300px] my-8 xl:my-0 mt-0">
           <div className="relative w-[160px] flex items-center justify-center mx-4 my-4 w-[33%] ">
             <img src="images/bluroneleft.png" alt="" />
-            <div className="top-50 absolute text-white font-[600] top-[45%] left-[15px]">Comming Soon</div>
+            {/* <div className="top-50 absolute text-white font-[600] top-[45%] left-[15px]">Comming Soon</div> */}
           </div>
           </div>
 
@@ -113,7 +113,7 @@ export default function Main() {
           <div className=" flex justify-center items-center min-w-[300px] my-8 xl:my-0">
           <div className="relative w-[160px] flex items-center justify-center">
             <img src="images/blurtworight.png" alt="" />
-            <div className="top-50 absolute text-white font-[600] top-[45%] left-[15px] text-[#ffffffc7]">Comming Soon</div>
+            {/* <div className="top-50 absolute text-white font-[600] top-[45%] left-[15px] text-[#ffffffc7]">Comming Soon</div> */}
           </div>
           </div>
 

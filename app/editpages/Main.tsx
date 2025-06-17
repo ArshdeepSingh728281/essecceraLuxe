@@ -1,5 +1,5 @@
 "use client"
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarEdit";
 import TopLine from "../components/TopLine";
 import ImageSlider from "../components/ImageSlider"
 import Footer from "../components/Footer";
