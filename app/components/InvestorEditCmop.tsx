@@ -307,6 +307,12 @@ export default function InvestorRelationsPage() {
           </div>
         </div>
       </div>
+
+               <div className="w-full flex items-center justify-center mt-[300px] mb-[-300px]">
+      <div className="w-[90%] text-center py-[13px] text-[20px] mt-[100px] rounded-md bg-black mt-8 text-white cursor-pointer hover:bg-[#212121e6] active:bg-[#1e1e1ec4] " >
+              Save
+      </div>
+      </div>
     </div>
   );
 }
