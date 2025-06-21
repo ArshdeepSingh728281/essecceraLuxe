@@ -14,6 +14,10 @@ type TeamMember = {
 };
 
 export default function AboutPage() {
+
+
+  const [loading,setLoading] = useState(false)
+  
   const [aboutText, setAboutText] = useState<string>(
     "              Kyoto Ceramics was founded in 2005 by Hana Tanaka, a passionate collector of Japanese ceramics. Her vision was to create a space where the beauty and craftsmanship of           these unique pieces could be shared with a wider audience. Over the years, Kyoto Ceramics has grown into a leading online destination for Japanese ceramics,           representing both established and emerging artists."
   );
@@ -27,6 +31,9 @@ export default function AboutPage() {
     { name: "Akari Ito", desc: "Akari Ito's work is...", img: "" },
     { name: "Hiroshi Nakamura", desc: "Hiroshi Nakamura combines...", img: "" },
   ]);
+
+    const [showModal, setShowModal] = useState(false);
+    const [otp, setOtp] = useState('');
 
   const aboutRef = useRef<HTMLTextAreaElement>(null);
   const missionRef = useRef<HTMLTextAreaElement>(null);
@@ -69,6 +76,120 @@ const autoResize = (ref: React.RefObject<HTMLTextAreaElement | null>) => {
   const addNewMember = () => {
     setTeam([...team, { name: "", desc: "", img: "" }]);
   };
+
+
+
+
+
+
+
+
+
+
+  
+
+  async function postProp(){
+    setLoading(true)
+    try {
+
+      const response = await fetch('/api/postpage', {
+          method:'POST',
+          headers:{"Content_Type":"application/json"},
+          body: JSON.stringify({pagename:"aboutus",otp,savedata:{team,aboutText,missionText}})
+      })
+       if ( response.status == 200) {
+           const result = await response.json()
+          //  console.log(result)
+           if(result.data.success=="true"){
+            window.location.reload();
+          }
+      if(result.data.success=="false"){
+            setLoading(false)
+          alert(result.msg);
+      }
+      } else if (response.status==400) {
+       console.log("error")
+      }
+
+  }catch (e) {
+      console.log(e)
+  }}
+
+
+
+
+
+
+
+
+  async function sendotp(){
+    console.log(team)
+    try {
+      const response = await fetch('/api/postpage', {
+          method:'GET',
+      })
+       if (response.status == 200) {
+          //  const result = await response.json()
+          //  console.log(result)
+          //  if(result.data.success=="true"){
+          // }
+      } else if (response.status==400) {
+       console.log("error")
+      }
+
+  }catch (e) {
+      console.log(e)
+  }}
+
+
+
+
+
+  
+      async function getInitialdata(){
+  
+      try {
+  
+        const response = await fetch('/api/getpage', {
+            method:'POST',
+            headers:{"Content_Type":"application/json"},
+            body: JSON.stringify({pagename:"aboutus"})
+        })
+         if ( response.status == 200) {
+             const result = await response.json()
+             console.log(result)
+             if(result.success==true){
+              setAboutText(result.page.data.aboutText);
+              setMissionText(result.page.data.missionText)
+              setTeam(result.page.data.team)
+
+  
+                
+            }
+        if(result.success=="false"){
+            alert(result.msg);
+        }
+        } else if (response.status==400) {
+         console.log("error")
+        }
+  
+    }catch (e) {
+        console.log(e)
+    }}
+  
+  
+  
+  
+    useEffect(()=>{
+  
+      getInitialdata();
+  
+    },[])
+  
+
+
+
+
 
   return (
     <>
@@ -174,11 +295,56 @@ const autoResize = (ref: React.RefObject<HTMLTextAreaElement | null>) => {
           </div>
         </div>
 
-         <div className="w-full flex items-center justify-center">
+        
+        
+
+
+        
+      <div onClick={() => {setShowModal(true);sendotp()}} className="w-full flex items-center justify-center">
       <div className="w-[90%] text-center py-[13px] text-[20px] mt-[100px] rounded-md bg-black mt-8 text-white cursor-pointer hover:bg-[#212121e6] active:bg-[#1e1e1ec4] " >
               Save
       </div>
       </div>
+
+
+
+        <div className="flex flex-col items-center justify-center ">
+     
+
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-xl p-6 w-[90%] max-w-sm">
+            <h2 className="text-lg font-semibold mb-4 text-center">Enter OTP</h2>
+            <input
+              type="text"
+              maxLength={6}
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              className="w-full border border-gray-300 rounded px-4 py-2 text-center text-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="123456"
+            />
+            <div className="flex justify-between">
+              <button
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-sm"
+              >
+                Close
+              </button>
+              <button
+                onClick={()=>{postProp()}}
+                className="px-4 py-2  bg-[#bfb1a1] cursor-pointer text-white rounded hover:bg-gray text-sm flex items-center justify-center"
+              >
+                {loading?<div className="spinnercareer"></div>:<div className="flex items-center justify-center">Submit</div>}
+
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+
+
+
 
         <Footer />
         <Copyright />

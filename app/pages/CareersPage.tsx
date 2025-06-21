@@ -33,6 +33,10 @@ const [formdata,setformdata] = useState({
 
 
 
+const [msg, setmsg] = useState("");
+const [loading, setLoading] = useState(false);
+
+
 
 const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const file = e.target.files?.[0];
@@ -69,9 +73,34 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
 
 
-async function handlesubmit(){
-  console.log(formdata)
-}
+ const handleSubmit = async () => {
+  setLoading(true)
+    const { fullname, email, department, file, filename } = formdata;
+
+    if (fullname.trim().length < 2) return setmsg("*Name too short"), setLoading(false);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setmsg("*Invalid email"),   setLoading(false);
+    if (!department || !file || !filename) return setmsg("*All fields required") , setLoading(false);
+    // console.log(formdata)
+  setmsg("")
+    try {
+      const res = await fetch("/api/formsubmit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formdata),
+      });
+
+      const data = await res.json();
+      if (!res.ok) return setmsg("*" + data.message);
+      setLoading(false)
+      setmsg("✅ Submitted");
+      setformdata({ fullname: "", email: "", department: "", filename: "", file: "" });
+
+    } catch (e) {
+      setLoading(false)
+      setmsg("❌ Error submitting");
+    }
+  };
+
 
   return (
     <div>
@@ -157,6 +186,7 @@ async function handlesubmit(){
 
 
 
+          {msg?<div className="mb-2 text-center text-red-500">{msg}</div>:null}
        <div className="max-w-[700px] mx-auto grid gap-8 px-[10px] xl:px-[0px]">
         {/* Name */}
         <div className="relative ">
@@ -165,7 +195,7 @@ async function handlesubmit(){
             id="name"
             name="name"
             value={formdata.fullname}
-            onChange={(e)=>{setformdata((prev)=>({...prev,fullname:e.target.value}))}}
+            onChange={(e)=>{setformdata((prev)=>({...prev,fullname:e.target.value}));  setmsg("")}}
             required
             className="peer w-full border border-gray-300 rounded-md px-4 pt-6 pb-2 text-sm text-black outline-none focus:border-black focus:ring-0 bg-[#e5e5e5]"
             placeholder=" "
@@ -303,11 +333,11 @@ async function handlesubmit(){
 
 
 
-       <div onClick={()=>{handlesubmit()}} className="max-w-[700px] mx-auto grid gap-8 responsivemargintobtn px-[10px] xl:px-[0px]">
+       <div onClick={loading?undefined:handleSubmit} className="max-w-[700px] mx-auto grid gap-8 responsivemargintobtn px-[10px] xl:px-[0px] ">
         {/* Name */}
-        <div className="relative w-full">
-          <div className=" peer w-full tran mt-6  text-[18px] text-center  bg-[#D4C9BE] font-[900] rounded-[5px] px-[20px] py-[16px]  cursor-pointer hover:bg-[#b8a898] active:bg-[#887b6f] active:translate-y-1 select-none">
-            Submit
+        <div className="relative w-full ">
+          <div className=" peer w-full tran mt-6  text-[18px] text-center  bg-[#D4C9BE] font-[900] rounded-[5px] px-[20px] py-[16px]  cursor-pointer hover:bg-[#b8a898] active:bg-[#887b6f] active:translate-y-1 select-none flex items-center justify-center">
+            {loading?<div className="spinnercareer"></div>:<div className="flex items-center justify-center">Submit</div>}
           </div>
         </div>
 

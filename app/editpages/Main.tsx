@@ -5,9 +5,13 @@ import ImageSlider from "../components/ImageSlider"
 import Footer from "../components/Footer";
 import Copyright from "../components/Copyright";
 import { useEffect, useState, useRef } from "react";
-
+// import { useRouter } from "next/navigation";
 
 export default function Main() {
+
+  // const router = useRouter();
+
+  const [loading,setLoading] = useState(false)
 
   const [aboutusheading, setAboutusHeading] = useState("About us")
   const [essheading, setessheading] = useState("Essenceara Luxe")
@@ -31,15 +35,15 @@ export default function Main() {
       text:"Backed by Robust Tech Infrastructure & Scalable Supply Chain"
     },
     {
-      img:"/images/about2.png",
+      img:"images/about2.png",
       text:"Pioneering Sustainability With Clean & Conscious Products"
     },
     {
-      img:"/images/about3.png",
+      img:"images/about3.png",
       text:"Purpose-Led, People-Centric Brand Philosophy"
     },
     {
-      img:"/images/about4.png",
+      img:"images/about4.png",
       text:"India's Fastest-Growing Tech-Enabled Personal Care Brand"
     },
     
@@ -66,6 +70,17 @@ export default function Main() {
   };
 
   const draggedIndex = useRef<number | null>(null);
+
+
+  const [showModal, setShowModal] = useState(false);
+  const [otp, setOtp] = useState('');
+
+  // const handleSubmit = () => {
+  //   console.log('OTP entered:', otp);
+  //   // Call API or validate OTP here
+  //   setShowModal(false);
+  //   setOtp('');
+  // };
 
 
 
@@ -130,7 +145,7 @@ export default function Main() {
   const [ourbrands, setOurbrands] = useState([
     {
       brandname: "UAMORE",
-      img: "/images/uamorelogo.png",
+      img: "images/uamorelogo.png",
       // img:"",
       showdelimg: true,
       color: "#edd7b5",
@@ -178,6 +193,116 @@ export default function Main() {
       textareaReftwo.current.style.height = `${textareaReftwo.current.scrollHeight}px`;
     }
   }, []);
+
+
+
+
+
+
+    async function getInitialdata(){
+
+    try {
+
+      const response = await fetch('/api/getpage', {
+          method:'POST',
+          headers:{"Content_Type":"application/json"},
+          body: JSON.stringify({pagename:"home"})
+      })
+       if ( response.status == 200) {
+           const result = await response.json()
+           console.log(result)
+           if(result.success==true){
+              setfrontimages(result.page.data.frontimages);
+              setAboutusHeading(result.page.data.aboutusheading)
+              setaboutusdata(result.page.data.aboutusdata);
+              setbrandimages(result.page.data.brandimages)
+              setessheading(result.page.data.essheading)
+              setessheadingend(result.page.data.essheadingend)
+              setOurbrands(result.page.data.ourbrands)
+              setourbrandsndbuisnesses(result.page.data.ourbrandsndbuisnesses)
+              setourstorytext(result.page.data.ourstorytext)
+
+
+              
+          }
+      if(result.success=="false"){
+          alert(result.msg);
+      }
+      } else if (response.status==400) {
+       console.log("error")
+      }
+
+  }catch (e) {
+      console.log(e)
+  }}
+
+
+
+
+  useEffect(()=>{
+
+    getInitialdata();
+
+  },[])
+
+
+
+  async function postProp(){
+    setLoading(true)
+    try {
+
+      const response = await fetch('/api/postpage', {
+          method:'POST',
+          headers:{"Content_Type":"application/json"},
+          body: JSON.stringify({pagename:"home",otp,savedata:{frontimages,aboutusheading,aboutusdata,essheading,essheadingend,ourbrands,ourstorytext,ourbrandsndbuisnesses,brandimages}})
+      })
+       if ( response.status == 200) {
+           const result = await response.json()
+          //  console.log(result)
+           if(result.data.success=="true"){
+              window.location.reload();
+          }
+      if(result.data.success=="false"){
+          alert(result.msg);
+              setLoading(false)
+      }
+      } else if (response.status==400) {
+       console.log("error")
+      }
+
+  }catch (e) {
+      console.log(e)
+  }}
+
+
+
+
+
+
+
+
+  async function sendotp(){
+    // console.log(brandimages)
+    try {
+      const response = await fetch('/api/postpage', {
+          method:'GET',
+      })
+       if (response.status == 200) {
+          //  const result = await response.json()
+          //  console.log(result)
+          //  if(result.data.success=="true"){
+          // }
+      } else if (response.status==400) {
+       console.log("error")
+      }
+
+  }catch (e) {
+      console.log(e)
+  }}
+
+
+
+
 
 
   return (
@@ -262,7 +387,7 @@ export default function Main() {
               }
             };
             reader.readAsDataURL(file);
-            console.log(frontimages)
+            // console.log(frontimages)
           }}
         />
 
@@ -802,7 +927,7 @@ onChange={(e) => {
                   ...prev,
                   { img: `data:${file.type};base64,${base64String}`, showdelimg: false },
                 ]);
-                console.log(brandimages)
+                // console.log(brandimages)
               }
             }}
           />
@@ -831,11 +956,61 @@ onChange={(e) => {
 
       </div>
 
-         <div className="w-full flex items-center justify-center">
+      <div onClick={() => {setShowModal(true);sendotp()}} className="w-full flex items-center justify-center">
       <div className="w-[90%] text-center py-[13px] text-[20px] mt-[100px] rounded-md bg-black mt-8 text-white cursor-pointer hover:bg-[#212121e6] active:bg-[#1e1e1ec4] " >
               Save
       </div>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div className="flex flex-col items-center justify-center ">
+     
+
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-xl p-6 w-[90%] max-w-sm">
+            <h2 className="text-lg font-semibold mb-4 text-center">Enter OTP</h2>
+            <input
+              type="text"
+              maxLength={6}
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              className="w-full border border-gray-300 rounded px-4 py-2 text-center text-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="123456"
+            />
+            <div className="flex justify-between">
+              <button
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-sm"
+              >
+                Close
+              </button>
+              <button
+                onClick={()=>{postProp()}}
+                className="px-4 py-2  bg-[#bfb1a1] cursor-pointer text-white rounded hover:bg-gray text-sm flex items-center justify-center"
+              >
+                {loading?<div className="spinnercareer"></div>:<div className="flex items-center justify-center">Submit</div>}
+
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+
+
+
       
       <Footer />
       <Copyright />
@@ -907,7 +1082,7 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     )
   );
 
-  console.log(img)
+  // console.log(img)
 };
 
 
@@ -999,3 +1174,29 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

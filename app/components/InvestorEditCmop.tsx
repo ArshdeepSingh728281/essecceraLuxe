@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState ,useEffect } from 'react';
 import { FaRegFileAlt } from 'react-icons/fa';
 
 // Types
@@ -14,9 +14,15 @@ type Report = {
   files: ReportFile[];
 };
 
+
 export default function InvestorRelationsPage() {
 
+    const [loading,setLoading] = useState(false)
+  
+
   const [newrow,setnewrow] = useState("")
+  const [showModal, setShowModal] = useState(false);
+  const [otp, setOtp] = useState('');
 
   const [reports, setReports] = useState<Report[]>([
     {
@@ -95,6 +101,124 @@ export default function InvestorRelationsPage() {
   };
 
   const activeReport = reports.find((r) => r.title === activeQuarter);
+
+
+
+
+  
+
+
+  async function postProp(){
+    setLoading(true)
+
+    try {
+
+      const response = await fetch('/api/postpage', {
+          method:'POST',
+          headers:{"Content_Type":"application/json"},
+          body: JSON.stringify({pagename:"investor",otp,savedata:{reports}})
+      })
+       if ( response.status == 200) {
+           const result = await response.json()
+           console.log(result)
+
+           if(result.data.success=="true"){
+            window.location.reload();
+          }
+      if(result.data.success=="false"){
+          alert(result.msg);
+              setLoading(false)
+
+      }
+      } else if (response.status==400) {
+       console.log("error")
+      }
+
+  }catch (e) {
+      console.log(e)
+  }}
+
+
+
+
+
+
+
+
+  async function sendotp(){
+    console.log(reports)
+    try {
+      const response = await fetch('/api/postpage', {
+          method:'GET',
+      })
+       if (response.status == 200) {
+          //  const result = await response.json()
+          //  console.log(result)
+          //  if(result.data.success=="true"){
+          // }
+      } else if (response.status==400) {
+       console.log("error")
+      }
+
+  }catch (e) {
+      console.log(e)
+  }}
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+        async function getInitialdata(){
+    
+        try {
+    
+          const response = await fetch('/api/getpage', {
+              method:'POST',
+              headers:{"Content_Type":"application/json"},
+              body: JSON.stringify({pagename:"investor"})
+          })
+           if ( response.status == 200) {
+               const result = await response.json()
+               console.log(result)
+               if(result.success==true){
+                setReports(result.page.data.reports)
+  
+    
+                  
+              }
+          if(result.success=="false"){
+              alert(result.msg);
+          }
+          } else if (response.status==400) {
+           console.log("error")
+          }
+    
+      }catch (e) {
+          console.log(e)
+      }}
+    
+    
+    
+    
+      useEffect(()=>{
+    
+        getInitialdata();
+    
+      },[])
+
+
+
+
+
+
+
 
   return (
     <div className="min-h-screen bg-white p-16 text-black font-sans">
@@ -240,7 +364,7 @@ export default function InvestorRelationsPage() {
             <div key={idx} className="flex items-center space-x-3 cursor-pointer">
               <FaRegFileAlt className="text-indigo-500" />
               <span className="text-lg font-medium ml-2">
-                {file.fname}
+                <a className='no-underline text-black cursor-pointer' href={file.file} target="_blank">{file.fname}</a>
                 {file.file && (
                   <a
                     href={file.file}
@@ -308,11 +432,58 @@ export default function InvestorRelationsPage() {
         </div>
       </div>
 
-               <div className="w-full flex items-center justify-center mt-[300px] mb-[-300px]">
+
+
+
+      <div onClick={() => {setShowModal(true);sendotp()}} className="w-full flex items-center justify-center mt-[300px] mb-[-300px]">
       <div className="w-[90%] text-center py-[13px] text-[20px] mt-[100px] rounded-md bg-black mt-8 text-white cursor-pointer hover:bg-[#212121e6] active:bg-[#1e1e1ec4] " >
               Save
       </div>
       </div>
+
+
+
+        <div className="flex flex-col items-center justify-center ">
+     
+
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-xl p-6 w-[90%] max-w-sm">
+            <h2 className="text-lg font-semibold mb-4 text-center">Enter OTP</h2>
+            <input
+              type="text"
+              maxLength={6}
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              className="w-full border border-gray-300 rounded px-4 py-2 text-center text-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="123456"
+            />
+            <div className="flex justify-between">
+              <button
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-sm"
+              >
+                Close
+              </button>
+              <button
+                onClick={()=>{postProp()}}
+                className="px-4 py-2  bg-[#bfb1a1] cursor-pointer text-white rounded hover:bg-gray text-sm flex items-center justify-center"
+              >
+                {loading?<div className="spinnercareer"></div>:<div className="flex items-center justify-center">Submit</div>}
+
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+
+
+
+
+
+
+
     </div>
   );
 }

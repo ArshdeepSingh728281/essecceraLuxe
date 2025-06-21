@@ -143,3 +143,7 @@ function AboutusComp({ text, img }: { text: string, img: string }) {
     </div>
   )
 }
+
+
+
+
