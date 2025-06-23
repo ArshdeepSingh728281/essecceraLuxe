@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import NewsAndEventsPage from "../pages/NewsAndEventsPage";
 
 export const revalidate = 3600;
