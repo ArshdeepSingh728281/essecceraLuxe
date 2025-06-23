@@ -1,6 +1,7 @@
+
 import { create } from "zustand";
 
-export type Pages = "about" | "/" | "newsandevents" | "ourbrands" | "investorrelations" | "careers";
+export type Pages = "about" | "/" | "newsandevents" | "ourbrands" | "investorrelations" | "careers" |"";
 
 interface PageStore {
   selectedPage: Pages;
@@ -8,7 +9,7 @@ interface PageStore {
 }
 
 export const usePageStore = create<PageStore>((set) => ({
-  selectedPage: "/",
+  selectedPage: "",
   setSelectedPage: (page) => set({ selectedPage: page }),
 }));
 

@@ -1,60 +1,17 @@
-'use client';
 
-import { useEffect, useState } from 'react';
-import { FaRegFileAlt } from 'react-icons/fa';
 
-type ReportFile = {
-  fname: string;
-  file: string; // file URL or base64
-};
+"use client";
 
-type Report = {
-  title: string;
-  files: ReportFile[];
-};
+import { useState } from "react";
+import { FaRegFileAlt } from "react-icons/fa";
+import { useInvestorStore } from "../store/investor";
 
 export default function InvestorRelationsPage() {
-  const [reports, setReports] = useState<Report[]>([
-    {
-      title: 'Quarter 1',
-      files: [
-        { fname: 'Q1 Financial Report', file: '' },
-        { fname: 'Q1 Investor Brief', file: '' },
-      ],
-    },
-    {
-      title: 'Quarter 2',
-      files: [{ fname: 'Q2 Financial Report', file: '' }],
-    },
-    {
-      title: 'Quarter 3',
-      files: [{ fname: 'Q3 Overview', file: '' }],
-    },
-  ]);
-
-  const [activeQuarter, setActiveQuarter] = useState<string>(reports[0].title);
-  const activeReport = reports.find((report) => report.title === activeQuarter);
-
-  useEffect(() => {
-    // This setReports call seems redundant if it's setting the same initial data
-    setReports([
-      {
-        title: 'Quarter 1',
-        files: [
-          { fname: 'Q1 Financial Report', file: '' },
-          { fname: 'Q1 Investor Brief', file: '' },
-        ],
-      },
-      {
-        title: 'Quarter 2',
-        files: [{ fname: 'Q2 Financial Report', file: '' }],
-      },
-      {
-        title: 'Quarter 3',
-        files: [{ fname: 'Q3 Overview', file: '' }],
-      },
-    ]);
-  }, []);
+  const { reports } = useInvestorStore();
+  const [activeQuarter, setActiveQuarter] = useState(
+    reports[0]?.title ?? "Quarter 1"
+  );
+  const activeReport = reports.find((r) => r.title === activeQuarter);
 
   return (
     <div className="min-h-screen bg-white px-4 py-10 md:px-16 text-black font-sans xl:ml-[30px] xl:mt-[30px] ">
@@ -75,15 +32,15 @@ export default function InvestorRelationsPage() {
                 onClick={() => setActiveQuarter(report.title)}
                 className={`flex items-center cursor-pointer transition-all ${
                   activeQuarter === report.title
-                    ? 'font-bold text-black'
-                    : 'text-gray-500'
+                    ? "font-bold text-black"
+                    : "text-gray-500"
                 }`}
               >
                 <span
                   className={`w-1 h-5 mr-3 rounded-sm ${
                     activeQuarter === report.title
-                      ? 'bg-[#e7dacc]'
-                      : 'bg-transparent'
+                      ? "bg-[#e7dacc]"
+                      : "bg-transparent"
                   }`}
                 />
                 {report.title}
@@ -104,7 +61,9 @@ export default function InvestorRelationsPage() {
             >
               <FaRegFileAlt className="text-indigo-500" />
               <span className="text-base md:text-lg font-medium">
-                {file.fname}
+                <a href={file.file} target="blank" className="no-underline text-black cursor-pointer">
+                  {file.fname}
+                </a>
               </span>
             </div>
           ))}

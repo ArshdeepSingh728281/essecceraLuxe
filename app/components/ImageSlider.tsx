@@ -6,18 +6,18 @@ import styles from "../styles/style.module.css";
 
 
 
-export default function ImageSlider() {
+export default function ImageSlider({allimages}:{allimages:string[]}) {
 
-    const images = [
+    const [images,setImages] = useState<string[]>([
         "/images/imgoneslider.png",
         "/images/imgtwoslider.png",
         "/images/imgthreeslider.png",
     
-    ];
+    ]);
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    
+
 
 
     // const nextImage = () => {
@@ -36,6 +36,15 @@ export default function ImageSlider() {
     
     const [tobeloading, settobeloading] = useState([...images]);
     const [alreadyloaded, setalreadyloaded] = useState<string[]>([]);
+
+        
+  useEffect(() => {
+    if (allimages && allimages.length > 0) {
+      setImages(allimages);
+      settobeloading([...allimages]);
+      setalreadyloaded([])
+    }
+  }, [allimages]);
     
     // useEffect(() => {
     //   const interval = setInterval(() => {

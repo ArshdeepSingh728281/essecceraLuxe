@@ -21,7 +21,7 @@ cloudinary.config({
 });
 
 
-async function uploadToCloudinary(base64Image) {
+async function uploadToCloudinary(base64Image:string) {
   try {
     // const response = await cloudinary.uploader.upload(`data:image/png;base64,${base64Image}`, {
     const response = await cloudinary.uploader.upload(`${base64Image}`, {
@@ -37,7 +37,7 @@ async function uploadToCloudinary(base64Image) {
 }
 
 
-const extractPublicId = (url) => {
+const extractPublicId = (url:string) => {
     const regex = /\/([^/]+\/[^/]+)(?=\.[a-zA-Z]{3,4}$)/; 
     const match = url.match(regex);
     console.log('Extracted Public ID:', match ? match[1] : null); 
@@ -46,7 +46,7 @@ const extractPublicId = (url) => {
 
 
 
-  const deleteImageFromCloudinary = (url) => {
+  const deleteImageFromCloudinary = (url:string) => {
     return new Promise((resolve, reject) => {
       const publicId = extractPublicId(url);
       console.log(publicId);
@@ -72,7 +72,7 @@ const extractPublicId = (url) => {
 
 
   
-export async function POST(req,res) {
+export async function POST(req:Request) {
   try {
     await dbConnect();
 

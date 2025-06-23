@@ -1,9 +1,10 @@
-import  AboutPage  from "../../editpages/AboutPageEdit";
 
-export default function About (){
+import AboutPage from "../../editpages/AboutPageEdit";
+
+export default function About() {
     return (
         <div>
-            <AboutPage/>
+            <AboutPage />
         </div>
-    )
+    );
 }

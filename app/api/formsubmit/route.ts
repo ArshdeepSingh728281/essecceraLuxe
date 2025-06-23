@@ -35,7 +35,7 @@ async function uploadToCloudinary(base64Image: string) {
 }
 
 
-const extractPublicId = (url) => {
+const extractPublicId = (url: string) => {
     const regex = /\/([^/]+\/[^/]+)(?=\.[a-zA-Z]{3,4}$)/; 
     const match = url.match(regex);
     console.log('Extracted Public ID:', match ? match[1] : null); 
@@ -44,7 +44,7 @@ const extractPublicId = (url) => {
 
 
 
-  const deleteImageFromCloudinary = (url) => {
+  const deleteImageFromCloudinary = (url:string) => {
     return new Promise((resolve, reject) => {
       const publicId = extractPublicId(url);
       console.log(publicId);
@@ -82,7 +82,7 @@ export async function POST(req: Request) {
     const { fullname, email, department, file, filename } = body;
 
     // === Extract IP for Vercel ===
-        const allHeaders = headers(); // don't call it inside the expression
+        const allHeaders = await headers(); // don't call it inside the expression
 
         const ip =
         allHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ||

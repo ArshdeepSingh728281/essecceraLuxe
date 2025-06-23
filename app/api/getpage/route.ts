@@ -14,7 +14,7 @@ dotenv.config();
 
 
   
-export async function POST(req,res) {
+export async function POST(req: Request) {
   try {
     await dbConnect();
 

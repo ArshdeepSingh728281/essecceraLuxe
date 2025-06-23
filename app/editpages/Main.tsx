@@ -309,7 +309,7 @@ export default function Main() {
     <div className="bg-white text-black ">
       <TopLine />
       <Navbar />
-      <ImageSlider />
+      <ImageSlider allimages={frontimages}/>
       <div className="flex flex-row items-center px-[20px] mt-[10px]">
 
         {/* {frontimages.map((item,i)=>
@@ -1036,7 +1036,7 @@ function AboutusComp({ text, img ,setaboutusdata , index}: { text: string, img?:
 
   useEffect(() => {
     setdis(text)
-  }, [])
+  }, [text])
 
 const handleDeleteImg = () => {
   setaboutusdata((prevData: { img: string; text: string }[]) =>
@@ -1158,12 +1158,19 @@ const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
       </div> */}
 
       <textarea
-        onChange={(e) => {
-          setdis(e.target.value);
+   onChange={(e) => {
+    const updatedText = e.target.value;
+    setdis(updatedText); 
 
-          e.target.style.height = "auto";
-          e.target.style.height = `${e.target.scrollHeight}px`;
-        }}
+    setaboutusdata((prevData) =>
+      prevData.map((item, i) =>
+        i === index ? { ...item, text: updatedText } : item
+      )
+    );
+
+    e.target.style.height = "auto";
+    e.target.style.height = `${e.target.scrollHeight}px`;
+  }}
         className="text-center text-[#123458] text-[16px] font-[500] mt-[27px] leading-tight resize-none p-2 rounded w-full overflow-hidden mt-[45px] pb-10"
         value={dis}
       />
