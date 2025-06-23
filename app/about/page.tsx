@@ -5,18 +5,35 @@ import AboutPage from "../pages/AboutPage";
 export const revalidate = 3600;
 
 export default async function About() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/getpage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ pagename: "aboutus" }),
-    next: { revalidate: 10 }, // enables ISR
-  });
+  let aboutText = "";
+  let missionText = "";
+  let team: { name: string; desc: string; img: string }[] = [];
 
-  const result = await res.json();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/getpage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pagename: "aboutus" }),
+      next: { revalidate: 10 }, // enables ISR
+    });
 
-  if (!result.success) return <div>Failed to load</div>;
+    if (!res.ok) {
+      console.error("Failed to fetch: status", res.status);
+      return <div>Failed to load</div>;
+    }
 
-  const { aboutText, missionText, team } = result.page.data;
+    const result = await res.json();
+
+    if (!result.success || !result.page?.data) {
+      console.error("Invalid JSON response", result);
+      return <div>Failed to load</div>;
+    }
+
+    ({ aboutText, missionText, team } = result.page.data);
+  } catch (err) {
+    console.error("Error loading About page:", err);
+    return <div>Failed to load</div>;
+  }
 
   return (
     <AboutPage
